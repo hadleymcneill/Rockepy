@@ -65,7 +65,7 @@ class Propagator:
 
             # Check if the rocket has crashed into the surface, terminates the simulation and readjusts the time vector
             if sol.status == 1:
-                print(f"Warning: OrbitalRocket stage {i + 1} has crashed into the Earth's surface. Simulation terminated.")
+                print(f"Warning: OrbitalRocket stage {i + 1} has crashed into the Earth's surface. Simulation terminated.") if not self.rocket.optimise_mode else None
                 t_eval = np.arange(t_start, round(sol.t[-1], 2) + self.rocket.propagation_time_step,
                                    self.rocket.propagation_time_step)
                 readjustment_error = abs(len(t_eval) - len(Y_sol))

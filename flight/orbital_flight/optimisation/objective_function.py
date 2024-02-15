@@ -61,6 +61,8 @@ class OptimisationFunction:
                                self.coast_duration,
                                self.final_coast)
 
+        rocket.optimise_mode = True
+
         thrust_force = OrbitalThrust()
         trajectory = Propagator(rocket=rocket, propagation_time_step=0.01, thrust_force=thrust_force,
                                 perturbations=self.perturbations)

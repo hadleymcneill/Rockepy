@@ -54,6 +54,7 @@ class OrbitalRocket:
         self.Y = None
         self.propagation_time = None
         self.propagation_time_step = None
+        self.optimise_mode = False
 
         # Allocate the properties from the MassComponents instance
         self.payload_mass = mass_fractions.payload_mass

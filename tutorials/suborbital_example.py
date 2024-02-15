@@ -25,13 +25,9 @@ perturbations = [DragPerturbation(wind_condition="Very Strong")]
 launch_site = [28, -81]
 
 
-rocket = SuborbitalRocket(launch_site, mass_fractions, structural_ratios, specific_impulses, diameter, drag_coefficient, thrust_to_weight, final_coast=100)
-print('total_mass:', rocket.mass)
-print('thrust:', rocket.stage_thrusts)
-print('burnout time:', rocket.burnout_time)
+rocket = SuborbitalRocket(launch_site, mass_fractions, structural_ratios, specific_impulses, diameter, drag_coefficient, thrust_to_weight, final_coast=1000)
 
 trajectory = Propagator(rocket=rocket, propagation_time_step=0.01, thrust_force=thrust_force, perturbations=perturbations)
 trajectory.propagate()
-
 
 PropagationProfile(rocket).report_suborbital()

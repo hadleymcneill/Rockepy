@@ -1,3 +1,7 @@
+"""
+This file contains the class for the reporting the results of the propagation of the rocket.
+"""
+
 import numpy as np
 import pyvista as pv
 from pyvista import examples
@@ -6,6 +10,9 @@ from utilities.utilities import set_axes_equal
 from aerodynamics.atmospheric_model import atmospheric_density
 from utilities.utilities import normalise_value
 from pathlib import Path
+
+plt.rcParams['font.family'] = 'Times New Roman'
+plt.rcParams['font.size'] = 14
 
 
 class PropagationProfile:
@@ -39,12 +46,10 @@ class PropagationProfile:
         density_history = np.array([atmospheric_density(alt) for alt in self.rocket.altitude])
         self.rocket.dynamic_pressure = 0.5 * density_history * (self.rocket.velocity_magnitude * 1000) ** 2
 
-        self.colours = ['red', 'green','cyan', 'blue']
-
 
     def propagation_profile_orbital_true_view(self):
         """
-        Advanced 3D plot of the propagation profile of the orbital rocket.
+        Advanced 3D plot of the propagation profile of the orbital rocket showing view from above Earth.
         """
 
         # Setup light
@@ -95,10 +100,11 @@ class PropagationProfile:
         Plot the propagation profile of the orbital rocket in 2D.
         """
         fig, ax = plt.subplots(figsize=(15, 8))
+        labels = self._get_legend_labels()
         for i, (start_idx, end_idx) in enumerate(self.rocket.section_indices):
             # Plot the phase of the rocket's trajectory
             ax.plot(self.y[start_idx:end_idx], self.z[start_idx:end_idx], color=self.colours[i % len(self.colours)],
-                    linewidth=1.5)
+                    linewidth=1.5, label=labels[i])
 
         # Dynamically calculate buffer based on trajectory spread
         y_range = max(self.y) - min(self.y)
@@ -118,34 +124,69 @@ class PropagationProfile:
         ax.add_patch(earth_circle)
         ax.add_patch(earth_atmosphere_circle)
         ax.set_aspect('equal')
+        ax.legend(labels, loc='best')
+        ax.set_title('2D Orbital Trajectory', fontsize=18)
         plt.grid(True)
 
     def propagation_profile_suborbital(self):
         """
-        Plot the propagation profile of the suborbital rocket in 3D.
+        Plot the propagation profile of the suborbital rocket in 3D with 2D projections against the walls and floor.
         """
         fig3d = plt.figure(figsize=(15, 8))
         ax3d = fig3d.add_subplot(111, projection='3d')
+        labels = self._get_legend_labels()  # Assuming this method returns a list of labels for the legend
+        max_range = np.array(
+            [self.x.max() - self.x.min(), self.y.max() - self.y.min(), self.rocket.altitude.max() - self.rocket.altitude.min()]).max() / 2.0
+        mid_x = (self.x.max() + self.x.min()) * 0.5
+        mid_y = (self.y.max() + self.y.min()) * 0.5
+        mid_z = (self.rocket.altitude.max() + self.rocket.altitude.min()) * 0.5
+
         for i, (start_idx, end_idx) in enumerate(self.rocket.section_indices):
-            ax3d.plot(self.x[start_idx:end_idx], self.y[start_idx:end_idx], self.z[start_idx:end_idx],
-                      color=self.colours[i % len(self.colours)], linewidth=1.5, linestyle='dashed')
-        set_axes_equal(ax3d)
+            # 3D trajectory
+            ax3d.plot(self.x[start_idx:end_idx], self.y[start_idx:end_idx], self.rocket.altitude[start_idx:end_idx],
+                      color=self.colours[i % len(self.colours)], linewidth=1.5, linestyle='dashed', label=labels[i])
+
+        ax3d.legend(labels, loc='best')
+
+        for i, (start_idx, end_idx) in enumerate(self.rocket.section_indices):
+            # Projections
+            ax3d.plot(self.x[start_idx:end_idx], self.y[start_idx:end_idx],
+                      np.full_like(self.x[start_idx:end_idx], mid_z - max_range),
+                      color=self.colours[i % len(self.colours)], linewidth=2.0, alpha=0.5)
+            ax3d.plot(self.x[start_idx:end_idx], np.full_like(self.y[start_idx:end_idx], mid_y + max_range),
+                      self.rocket.altitude[start_idx:end_idx],
+                      color=self.colours[i % len(self.colours)], linewidth=2.0, alpha=0.5)
+            ax3d.plot(np.full_like(self.x[start_idx:end_idx], mid_x - max_range), self.y[start_idx:end_idx],
+                      self.rocket.altitude[start_idx:end_idx],
+                      color=self.colours[i % len(self.colours)], linewidth=2.0, alpha=0.5)
+
+        # Set plot limits
+        ax3d.set_xlim(mid_x - max_range, mid_x + max_range)
+        ax3d.set_ylim(mid_y - max_range, mid_y + max_range)
+        ax3d.set_zlim(mid_z - max_range, mid_z + max_range)
+
+        set_axes_equal(ax3d)  # This will need to be adjusted, as it may interfere with the projections
         ax3d.set_xlabel('X (km)', fontsize=10)
         ax3d.set_ylabel('Y (km)', fontsize=10)
         ax3d.set_zlabel('Z (km)', fontsize=10)
+        ax3d.set_title('Suborbital Trajectory', fontsize=18)
+
 
     def report_velocity(self):
         """
         Report the velocity of the rocket over time for each phase of the trajectory.
         """
         fig, ax = plt.subplots(figsize=(15, 8))
+        labels = self._get_legend_labels()
         for i, (start_idx, end_idx) in enumerate(self.rocket.section_indices):
             # Plot the phase of the rocket's trajectory
             ax.plot(self.rocket.t_eval[start_idx:end_idx], self.rocket.velocity_magnitude[start_idx:end_idx],
-                    color=self.colours[i % len(self.colours)], linewidth=1.5)
+                    color=self.colours[i % len(self.colours)], linewidth=1.5, label=labels[i])
+
+        ax.legend(labels, loc='best')
         ax.set_xlabel('Time (s)', fontsize=14)
         ax.set_ylabel('Velocity (km/s)', fontsize=14)
-        ax.set_title('Velocity Over Time', fontsize=16)
+        ax.set_title('Velocity Over Time', fontsize=18)
         ax.grid(True)
 
     def report_acceleration(self):
@@ -153,13 +194,15 @@ class PropagationProfile:
         Report the acceleration of the rocket over time for each phase of the trajectory.
         """
         fig, ax = plt.subplots(figsize=(15, 8))
+        labels = self._get_legend_labels()
         for i, (start_idx, end_idx) in enumerate(self.rocket.section_indices):
             # Plot the phase of the rocket's trajectory
             ax.plot(self.rocket.t_eval[start_idx:end_idx], self.rocket.acceleration[start_idx:end_idx],
-                    color=self.colours[i % len(self.colours)], linewidth=1.5)
+                    color=self.colours[i % len(self.colours)], linewidth=1.5, label=labels[i])
+        ax.legend(labels, loc='best')
         ax.set_xlabel('Time (s)', fontsize=14)
         ax.set_ylabel('Acceleration (m/s)', fontsize=14)
-        ax.set_title('Acceleration Over Time', fontsize=16)
+        ax.set_title('Acceleration Over Time', fontsize=18)
         ax.grid(True)
 
     def report_altitude(self):
@@ -167,13 +210,15 @@ class PropagationProfile:
         Report the altitude of the rocket over time for each phase of the trajectory.
         """
         fig, ax = plt.subplots(figsize=(15, 8))
+        labels = self._get_legend_labels()
         for i, (start_idx, end_idx) in enumerate(self.rocket.section_indices):
             # Plot the phase of the rocket's trajectory
             ax.plot(self.rocket.t_eval[start_idx:end_idx], self.rocket.altitude[start_idx:end_idx],
-                    color=self.colours[i % len(self.colours)], linewidth=1.5)
+                    color=self.colours[i % len(self.colours)], linewidth=1.5, label=labels[i])
+        ax.legend(labels, loc='best')
         ax.set_xlabel('Time (s)', fontsize=14)
         ax.set_ylabel('Altitude (km)', fontsize=14)
-        ax.set_title('Altitude Over Time', fontsize=16)
+        ax.set_title('Altitude Over Time', fontsize=18)
         ax.grid(True)
 
     def report_mass(self):
@@ -181,13 +226,15 @@ class PropagationProfile:
         Report the mass of the rocket over time for each phase of the trajectory.
         """
         fig, ax = plt.subplots(figsize=(15, 8))
+        labels = self._get_legend_labels()
         for i, (start_idx, end_idx) in enumerate(self.rocket.section_indices):
             # Plot the phase of the rocket's trajectory
             ax.plot(self.rocket.t_eval[start_idx:end_idx], self.rocket.mass_history[start_idx:end_idx],
-                    color=self.colours[i % len(self.colours)], linewidth=1.5)
+                    color=self.colours[i % len(self.colours)], linewidth=1.5, label=labels[i])
+        ax.legend(labels, loc='best')
         ax.set_xlabel('Time (s)', fontsize=14)
         ax.set_ylabel('Mass (kg)', fontsize=14)
-        ax.set_title('Mass Over Time', fontsize=16)
+        ax.set_title('Mass Over Time', fontsize=18)
         ax.grid(True)
 
     def report_flight_path_angle(self):
@@ -195,13 +242,15 @@ class PropagationProfile:
         Report the flight path angle of the rocket over time for each phase of the trajectory.
         """
         fig, ax = plt.subplots(figsize=(15, 8))
+        labels = self._get_legend_labels()
         for i, (start_idx, end_idx) in enumerate(self.rocket.section_indices):
             # Plot the phase of the rocket's trajectory
             ax.plot(self.rocket.t_eval[start_idx:end_idx], self.rocket.flight_path_angle[start_idx:end_idx],
-                    color=self.colours[i % len(self.colours)], linewidth=1.5)
+                    color=self.colours[i % len(self.colours)], linewidth=1.5, label=labels[i])
+        ax.legend(labels, loc='best')
         ax.set_xlabel('Time (s)', fontsize=14)
         ax.set_ylabel('Flight Path Angle (degrees)', fontsize=14)
-        ax.set_title('Flight Path Angle Over Time', fontsize=16)
+        ax.set_title('Flight Path Angle Over Time', fontsize=18)
         ax.grid(True)
 
     def report_dynamic_pressure(self):
@@ -209,16 +258,34 @@ class PropagationProfile:
         Report the flight path angle of the rocket over time for each phase of the trajectory.
         """
         fig, ax = plt.subplots(figsize=(15, 8))
+        labels = self._get_legend_labels()
         for i, (start_idx, end_idx) in enumerate(self.rocket.section_indices):
             # Plot the phase of the rocket's trajectory
             ax.plot(self.rocket.t_eval[start_idx:end_idx], self.rocket.dynamic_pressure[start_idx:end_idx],
-                    color=self.colours[i % len(self.colours)], linewidth=1.5)
+                    color=self.colours[i % len(self.colours)], linewidth=1.5, label=labels[i])
+        ax.legend(labels, loc='best')
         ax.set_xlabel('Time (s)', fontsize=14)
         ax.set_ylabel('Dynamic Pressure (N/m^2)', fontsize=14)
-        ax.set_title('Flight Path Angle Over Time (degrees)', fontsize=16)
+        ax.set_title('Dynamic Pressure Over Time', fontsize=18)
         ax.grid(True)
 
+    def _get_legend_labels(self):
+        """
+        Returns a list of legend labels based on the flight type.
+        """
+        if self.flight_type == 'suborbital':
+            # Defined phases for suborbital flight
+            return ['Ascent', 'Coast', 'Drogue Parachute', 'Main Parachute']
+        elif self.flight_type == 'orbital':
+            labels = []
+            for i in range(len(self.rocket.section_indices)):
+                label = f'Stage {i + 1}' if i < len(self.rocket.section_indices) - 1 else 'Orbit Insertion'
+                labels.append(label)
+            return labels
+
     def report_suborbital(self):
+        self.flight_type = 'suborbital'
+        self.colours = ['red', 'green', 'blue', 'black']
         self.report_velocity()
         self.report_acceleration()
         self.report_altitude()
@@ -229,6 +296,8 @@ class PropagationProfile:
         plt.show()
 
     def report_orbital(self):
+        self.flight_type = 'orbital'
+        self.colours = ['red', 'green', 'cyan', 'blue']
         self.report_velocity()
         self.report_acceleration()
         self.report_altitude()
