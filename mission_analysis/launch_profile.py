@@ -150,7 +150,7 @@ class PropagationProfile:
         ax.add_patch(earth_atmosphere_circle)
         ax.set_aspect('equal')
         ax.legend(labels, loc='best')
-        ax.set_title('2D Orbital Trajectory', fontsize=18)
+        ax.set_title('Orbital Trajectory', fontsize=18)
         plt.grid(True)
 
     def propagation_profile_suborbital(self):
@@ -191,9 +191,9 @@ class PropagationProfile:
         ax3d.set_zlim(mid_z - max_range, mid_z + max_range)
 
         set_axes_equal(ax3d)  # This will need to be adjusted, as it may interfere with the projections
-        ax3d.set_xlabel('X (km)', fontsize=10)
-        ax3d.set_ylabel('Y (km)', fontsize=10)
-        ax3d.set_zlabel('Z (km)', fontsize=10)
+        ax3d.set_xlabel('North (km)', fontsize=10)
+        ax3d.set_ylabel('East (km)', fontsize=10)
+        ax3d.set_zlabel('Altitude (km)', fontsize=10)
         ax3d.set_title('Suborbital Trajectory', fontsize=18)
 
     def report_velocity(self):
