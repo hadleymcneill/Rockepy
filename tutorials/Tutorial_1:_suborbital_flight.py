@@ -1,9 +1,7 @@
-from flightdynamics.suborbital_flight.rocket.suborbital_rocket import SuborbitalRocket
-from flightdynamics.mass_components import MassComponents
-from aerodynamics.perturbations import DragPerturbation
-from flightdynamics.suborbital_flight.rocket.thrust_suborbital import SuborbitalThrust
-from flightdynamics.suborbital_flight.suborbital_flight_propagation import Propagator
-from mission_analysis.launch_profile import PropagationProfile
+from flightdynamics.suborbital_flight import *
+from aerodynamics import *
+from mission_analysis import *
+from vehicles import *
 
 
 mass_components = MassComponents(structural_ratios=[0.15],

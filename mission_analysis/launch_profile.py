@@ -47,6 +47,31 @@ class PropagationProfile:
         self.rocket.dynamic_pressure = 0.5 * density_history * (self.rocket.velocity_magnitude * 1000) ** 2
 
 
+    def report_suborbital(self):
+        self.flight_type = 'suborbital'
+        self.colours = ['red', 'green', 'blue', 'black']
+        self.report_velocity()
+        self.report_acceleration()
+        self.report_altitude()
+        self.report_mass()
+        self.report_flight_path_angle()
+        self.report_dynamic_pressure()
+        self.propagation_profile_suborbital()
+        plt.show()
+
+    def report_orbital(self):
+        self.flight_type = 'orbital'
+        self.colours = ['red', 'green', 'cyan', 'blue']
+        self.report_velocity()
+        self.report_acceleration()
+        self.report_altitude()
+        self.report_mass()
+        self.report_flight_path_angle()
+        self.report_dynamic_pressure()
+        self.propagation_profile_orbital_2D()
+        self.propagation_profile_orbital_true_view()
+        plt.show()
+
     def propagation_profile_orbital_true_view(self):
         """
         Advanced 3D plot of the propagation profile of the orbital rocket showing view from above Earth.
@@ -171,7 +196,6 @@ class PropagationProfile:
         ax3d.set_zlabel('Z (km)', fontsize=10)
         ax3d.set_title('Suborbital Trajectory', fontsize=18)
 
-
     def report_velocity(self):
         """
         Report the velocity of the rocket over time for each phase of the trajectory.
@@ -282,28 +306,3 @@ class PropagationProfile:
                 label = f'Stage {i + 1}' if i < len(self.rocket.section_indices) - 1 else 'Orbit Insertion'
                 labels.append(label)
             return labels
-
-    def report_suborbital(self):
-        self.flight_type = 'suborbital'
-        self.colours = ['red', 'green', 'blue', 'black']
-        self.report_velocity()
-        self.report_acceleration()
-        self.report_altitude()
-        self.report_mass()
-        self.report_flight_path_angle()
-        self.report_dynamic_pressure()
-        self.propagation_profile_suborbital()
-        plt.show()
-
-    def report_orbital(self):
-        self.flight_type = 'orbital'
-        self.colours = ['red', 'green', 'cyan', 'blue']
-        self.report_velocity()
-        self.report_acceleration()
-        self.report_altitude()
-        self.report_mass()
-        self.report_flight_path_angle()
-        self.report_dynamic_pressure()
-        self.propagation_profile_orbital_2D()
-        self.propagation_profile_orbital_true_view()
-        plt.show()
