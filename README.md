@@ -4,10 +4,10 @@
 
 
 
-<h1 align="center">Rockepy: User-Friendly flightdynamics Toolkit</h1>
+<h1 align="center">Rockepy: User-Friendly flight-dynamics Toolkit</h1>
 
 ## Overview
-Welcome to **Rockepy** – the python flightdynamics toolkit designed with simplicity and approachability in mind. Whether you're a student taking your first steps in aerospace engineering, a researcher needing quick and reliable tools, or even an expert looking for an intuitive flightdynamics library, Rockepy is here to guide you through the complexities of flightdynamics.
+Welcome to **Rockepy** – the python flight-dynamics toolkit designed with simplicity and approachability in mind. Whether you're a student taking your first steps in aerospace engineering, a researcher needing quick and reliable tools, or even an expert looking for an intuitive flight-dynamics library, Rockepy is here to guide you through the complexities of flight-dynamics.
 
 ## Vision
 Rockepy aims to bridge the gap between advanced flight computations and ease of use. The core idea is to create a toolkit that "holds your hand", making it accessible to all, regardless of their prior expertise in the domain or in Python programming. The code is designed to be easy to use and easy to read, with no room for ambiguity.
@@ -73,7 +73,7 @@ Learn how to use Rockepy efficiently through the concise tutorials. These guides
 [Explore Rockepy Tutorials](https://github.com/hadleymcneill/Rockepy/tree/main/tutorials)
 
 ## Planned Features
-- **Intuitive Interfaces**: User-friendly functions for common flightdynamics calculations.
+- **Intuitive Interfaces**: User-friendly functions for common flight-dynamics calculations.
 - **Step-by-Step Guidance**: Comprehensive documentation and examples to help users at every step.
 - **Community Input**: Adapting and growing based on the feedback and needs of our user community.
 
