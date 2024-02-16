@@ -54,12 +54,12 @@ _A simpified and advanced profile of an optimised staged orbital launch to a tar
 
 #### Comprehensive Mission Reporting
 <p align="center">
-  <img src="utilities/assets/Tutorial_3_dynamic_pressure.png" width="300" height="300">
-  <img src="utilities/assets/Tutorial_3_acceleration.png" width="300" height="300">
-  <img src="utilities/assets/Tutorial_3_flight_path_angle.png" width="300" height="300">
-  <img src="utilities/assets/Tutorial_1_dynamic_pressure.png" width="300" height="300">
-  <img src="utilities/assets/Tutorial_3_mass.png" width="300" height="300">
-  <img src="utilities/assets/Tutorial_3_velocity.png" width="300" height="300">
+  <img src="utilities/assets/Tutorial_1_dynamic_pressure.png" width="750" height="350">
+  <img src="utilities/assets/Tutorial_3_dynamic_pressure.png" width="750" height="350">
+  <img src="utilities/assets/Tutorial_3_acceleration.png" width="750" height="350">
+  <img src="utilities/assets/Tutorial_3_flight_path_angle.png" width="750" height="350">
+  <img src="utilities/assets/Tutorial_3_mass.png" width="750" height="350">
+  <img src="utilities/assets/Tutorial_3_velocity.png" width="750" height="350">
 </p>
 
 _Some of the available reporting options used for orbital and sub-orbital flight analysis._
