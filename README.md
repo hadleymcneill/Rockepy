@@ -55,7 +55,6 @@ _A simpified and advanced profile of an optimised staged orbital launch to a tar
 #### Comprehensive Mission Reporting
 <p align="center">
   <img src="utilities/assets/Tutorial_1_dynamic_pressure.png" width="650" height="350">
-  <img src="utilities/assets/Tutorial_3_dynamic_pressure.png" width="650" height="350">
   <img src="utilities/assets/Tutorial_3_velocity.png" width="650" height="350">
   <img src="utilities/assets/Tutorial_3_acceleration.png" width="650" height="350">
   <img src="utilities/assets/Tutorial_3_mass.png" width="650" height="350">
