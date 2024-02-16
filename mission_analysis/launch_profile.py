@@ -195,8 +195,6 @@ class PropagationProfile:
         ax3d.set_ylabel('East (km)', fontsize=10)
         ax3d.set_zlabel('Altitude (km)', fontsize=10)
         ax3d.set_title('Suborbital Trajectory', fontsize=18)
-        ax3d.text2D(0.5, 0.98, 'Light Winds', transform=ax3d.transAxes,
-                    ha='center', fontsize=12, style='italic')
         ax3d.view_init(elev=20, azim=330)
 
     def report_velocity(self):
