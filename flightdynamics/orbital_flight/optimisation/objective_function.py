@@ -60,15 +60,13 @@ class OptimisationFunction:
         burnout_velocity = variables[0]
         pitch_over_angle = variables[1]
 
-        # Structuring the problem for current optimisation variables
-        mass_fractions = MassComponents(self.structural_ratios,
-                                        self.specific_impulses,
-                                        self.payload_mass,
-                                        burnout_velocity)
-        mass_fractions.get_mass_components()
+        # Build the rocket for the current optimisation variables
         rocket = OrbitalRocket(self.launch_site,
                                self.target_inclination,
-                               mass_fractions,
+                               self.structural_ratios,
+                               self.specific_impulses,
+                               self.payload_mass,
+                               burnout_velocity,
                                self.diameter,
                                self.drag_coefficient,
                                self.thrust_to_weight,
@@ -93,4 +91,4 @@ class OptimisationFunction:
         e = ((velocity @ velocity - 398600.4418 / np.linalg.norm(position)) * position - (position @ velocity) * velocity) / 398600.4418
         eccentricity = np.linalg.norm(e)
 
-        return mass_fractions.total_mass, eccentricity
+        return rocket.mass, eccentricity

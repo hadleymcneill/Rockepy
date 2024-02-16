@@ -2,7 +2,7 @@
 This module contains the class that constructs the orbital rocket object.
 """
 
-import numpy as np
+from vehicles.mass_components import MassComponents
 import math
 
 
@@ -10,7 +10,10 @@ class OrbitalRocket:
 
     def __init__(self, launch_site,
                  target_inclination,
-                 mass_components,
+                 structural_ratios,
+                 specific_impulses,
+                 payload_mass,
+                 burnout_velocity,
                  diameter,
                  drag_coefficient,
                  thrust_to_weight,
@@ -22,7 +25,10 @@ class OrbitalRocket:
         Args:
             launch_site (list): Latitude and longitude of the launch site.
             target_inclination (float): The inclination of the target orbit (deg).
-            mass_components (MassComponents): MassComponents object containing the mass fractions of the rocket.
+            structural_ratios (list): List of structural ratios for each stage.
+            specific_impulses (list): List of specific impulses for each stage.
+            payload_mass (float): Mass of the payload (kg).
+            burnout_velocity (float): Burnout velocity of the rocket (m/s).
             diameter (float): Diameter of the rocket (m).
             drag_coefficient (float): Drag coefficient of the rocket.
             thrust_to_weight (float): Thrust to weight ratio of the rocket.
@@ -50,7 +56,12 @@ class OrbitalRocket:
         self.propagation_time_step = None
         self.optimise_mode = False
 
-        # Allocate the properties from the MassComponents instance
+        # Retrieve and allocate the properties of the mass components
+        mass_components = MassComponents(structural_ratios=structural_ratios,
+                                         specific_impulses=specific_impulses,
+                                         payload_mass=payload_mass,
+                                         burnout_velocity=burnout_velocity)
+        mass_components.get_mass_components()
         self.payload_mass = mass_components.payload_mass
         self.mass_ratio = mass_components.mass_ratio
         self.step_mass = mass_components.step_mass

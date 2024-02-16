@@ -104,15 +104,13 @@ class OrbitalFlightOptimiser:
         This method reports the best solution found by the optimisation algorithm.
         """
 
-        # Structuring the problem for best optimisation variables
-        mass_components = MassComponents(self.structural_ratios,
-                                         self.specific_impulses,
-                                         self.payload_mass,
-                                         self.burnout_velocity)
-        mass_components.get_mass_components()
+        # Build the rocket for the best optimisation variables
         rocket = OrbitalRocket(self.launch_site,
                                self.target_inclination,
-                               mass_components,
+                               self.structural_ratios,
+                               self.specific_impulses,
+                               self.payload_mass,
+                               self.burnout_velocity,
                                self.diameter,
                                self.drag_coefficient,
                                self.thrust_to_weight,
