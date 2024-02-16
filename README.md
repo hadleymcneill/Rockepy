@@ -91,7 +91,7 @@ To install Rockepy along with its dependencies, follow these steps:
 1. **Clone the Repository**: Clone the Rockepy repository to your local machine.
 
 ```bash
-git clone https://github.com/hadleymcneill/Rockepy.git
+git clone https://github.com/hadleymcneill/rockepy.git
 cd rockepy
 ```
 
