@@ -22,7 +22,7 @@ Rockepy is continuously under active development, future updates will continue t
 
 ## A brief look at whats possible with Rockepy
 
-#### Suborbital Trajectory Analysis
+#### Suborbital Launch Analysis
 <p align="center">
   <img src="utilities/assets/Tutorial_1_light_winds.png" width="400" height="400">
   <img src="utilities/assets/Tutorial_1_very_strong_winds.png" width="400" height="400">
@@ -32,13 +32,13 @@ _The profile of a suborbital launch in different weather conditions._
 
 ---
 
-#### Orbtal Trajectory Analysis
+#### Orbtal Launch Analysis
 <p align="center">
   <img src="utilities/assets/Tutorial_2_detailed_insertion.png" width="700" height="400">
-  <img src="utilities/assets/Tutorial_2_insertion.png" width="700" height="400">
+  <img src="utilities/assets/Tutorial_2_insertion.png" width="700" height="500">
 </p>
 
-_The ground track of a satellite in a molniya orbit._
+_A simpified and advanced profile of a staged orbital launch._
 
 ---
 
