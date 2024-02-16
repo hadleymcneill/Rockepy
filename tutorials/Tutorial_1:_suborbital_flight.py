@@ -35,7 +35,7 @@ rocket = SuborbitalRocket(launch_site=[28, -81],  # Kennedy Space Center for thi
 trajectory = Propagator(rocket=rocket,
                         propagation_time_step=0.01,  # Time step for propagation (s)
                         thrust_force=SuborbitalThrust(),  # Thrust force model
-                        perturbations=[DragPerturbation(wind_condition="Light")]) # Atmospheric model
+                        perturbations=[DragPerturbation(wind_condition="Very Strong")]) # Atmospheric model
 trajectory.propagate()
 
 # Step 3: Flight Profile Analysis

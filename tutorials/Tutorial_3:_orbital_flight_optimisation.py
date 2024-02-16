@@ -27,7 +27,7 @@ optimiser = OrbitalFlightOptimiser(launch_site=[28, -81],  # Kennedy Space Cente
                                    thrust_to_weight=1.5,  # Thrust to weight ratio
                                    number_of_stages=3,  # Number of stages
                                    coast_duration=3,  # Coast duration between stages (s)
-                                   final_coast=5500,  # Final coast duration before payload deployment (s)
+                                   final_coast=10,  # Final coast duration before payload deployment (s)
                                    perturbations=[DragPerturbation(wind_condition="None")])  # Atmospheric model
 
 # Step 2: Running the Optimisation
