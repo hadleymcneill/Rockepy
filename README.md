@@ -20,7 +20,7 @@ Rockepy is continuously under active development, future updates will continue t
 
 - **Sub-Orbital Flight**: Tailored for missions that do not require orbit achievement, the Sub-Orbital Flight feature within Rockepy offers a detailed analysis of launch ascent trajectories, vehicle performance under atmospheric conditions, and recovery operations. It is ideal for sounding rockets, ballistic simulations, or any application requiring sub-orbital flight. This module allows for the exploration of various flight profiles, including the impact of drag coefficient, thrust-to-weight ratios, thrust performance during ascent and descent phases. Additionally, users can simulate the effects of different environmental conditions on the rocket's trajectory, ensuring a comprehensive understanding and planning of sub-orbital missions.
 
-## A brief look at whats possible with Rockepy
+## A brief look at what's possible with Rockepy
 
 #### Suborbital Launch Analysis
 <p align="center">
@@ -32,7 +32,7 @@ _The profile of a suborbital launch in different weather conditions._
 
 ---
 
-#### Orbtal Launch Analysis
+#### Orbital Launch Analysis
 <p align="center">
   <img src="utilities/assets/Tutorial_2_detailed_insertion.png" width="700" height="400">
   <img src="utilities/assets/Tutorial_2_insertion.png" width="1000" height="350">
