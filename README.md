@@ -24,8 +24,8 @@ Rockepy is continuously under active development, future updates will continue t
 
 #### Trajectory Analysis
 <p align="center">
-  <img src="utilities/assets/Tutorial_1_profile.png" width="400" height="400">
-  <img src="utilities/assets/Tutorial_1_profile.png" width="400" height="400">
+  <img src="utilities/assets/Tutorial_1_light_winds.png" width="400" height="400">
+  <img src="utilities/assets/Tutorial_1_very_strong_winds.png" width="400" height="400">
 </p>
 
 _The profile of a mission from low Earth orbit with a hohmann transfer to a geosynchronous orbit followed by a phasing manoeuvre._
