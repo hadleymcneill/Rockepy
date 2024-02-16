@@ -35,7 +35,7 @@ _The profile of a suborbital launch in different weather conditions._
 #### Orbtal Launch Analysis
 <p align="center">
   <img src="utilities/assets/Tutorial_2_detailed_insertion.png" width="700" height="400">
-  <img src="utilities/assets/Tutorial_2_insertion.png" width="700" height="600">
+  <img src="utilities/assets/Tutorial_2_insertion.png" width="700" height="750">
 </p>
 
 _A simpified and advanced profile of a staged orbital launch._
