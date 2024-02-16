@@ -3,7 +3,6 @@ from flight.mass_components import MassComponents
 from flight.orbital_flight.rocket.orbital_flight_thrust import OrbitalThrust
 from flight.orbital_flight.orbital_flight_propagation import Propagator
 from mission_analysis.launch_profile import PropagationProfile
-
 import pygmo as pg
 from flight.orbital_flight.optimisation.objective_function import OptimisationFunction
 import time
@@ -101,10 +100,10 @@ class OrbitalFlightOptimiser:
 
 
     def report(self):
-        mass_fractions = MassComponents(self.structural_ratios, self.specific_impulses, self.payload_mass, self.burnout_velocity)
-        mass_fractions.get_mass_components()
+        mass_components = MassComponents(self.structural_ratios, self.specific_impulses, self.payload_mass, self.burnout_velocity)
+        mass_components.get_mass_components()
 
-        rocket = OrbitalRocket(self.launch_site, self.target_inclination, mass_fractions, self.structural_ratios, self.specific_impulses,
+        rocket = OrbitalRocket(self.launch_site, self.target_inclination, mass_components,
                                self.diameter, self.drag_coefficient,
                                self.thrust_to_weight, self.number_of_stages, self.pitch_over_angle, coast_duration=self.coast_duration,
                                final_coast=self.final_coast)

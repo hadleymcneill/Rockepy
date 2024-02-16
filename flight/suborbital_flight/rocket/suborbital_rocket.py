@@ -9,9 +9,7 @@ import math
 class SuborbitalRocket:
 
     def __init__(self, launch_site,
-                 mass_fractions,
-                 structural_ratio,
-                 specific_impulse,
+                 mass_components,
                  diameter,
                  drag_coefficient,
                  thrust_to_weight,
@@ -19,9 +17,7 @@ class SuborbitalRocket:
         """
         Args:
             launch_site (list): Latitude and longitude of the launch site.
-            mass_fractions (MassComponents): MassComponents object containing the mass fractions of the rocket.
-            structural_ratio (list): List of structural ratios for each stage.
-            specific_impulse (list): List of specific impulses for each stage.
+            mass_components (MassComponents): MassComponents object containing the mass fractions of the rocket.
             diameter (float): Diameter of the rocket (m).
             drag_coefficient (float): Drag coefficient of the rocket.
             thrust_to_weight (float): Thrust to weight ratio of the rocket.
@@ -32,8 +28,6 @@ class SuborbitalRocket:
         self.launch_site = launch_site
         self.position = [0, 0, 6371]
         self.velocity = [0, 0, 0.00000001]
-        self.structural_ratio = np.array(structural_ratio)
-        self.specific_impulses = np.array(specific_impulse)
         self.diameter = diameter
         self.drag_coefficient = drag_coefficient
         self.thrust_to_weight = thrust_to_weight
@@ -46,15 +40,17 @@ class SuborbitalRocket:
         self.propagation_time_step = None
 
         # Allocate the properties from the MassComponents instance
-        self.payload_mass = mass_fractions.payload_mass
-        self.mass_ratio = mass_fractions.mass_ratio
-        self.step_mass = mass_fractions.step_mass
-        self.empty_mass = mass_fractions.empty_mass
-        self.propellant_mass = mass_fractions.propellant_mass
-        self.mass = mass_fractions.total_mass
-        self.mass_of_each_stage = mass_fractions.mass_of_each_stage
-        self.burnout_velocity = mass_fractions.burnout_velocity
-        self.effective_exhaust_velocities = mass_fractions.effective_exhaust_velocities
+        self.payload_mass = mass_components.payload_mass
+        self.mass_ratio = mass_components.mass_ratio
+        self.step_mass = mass_components.step_mass
+        self.empty_mass = mass_components.empty_mass
+        self.propellant_mass = mass_components.propellant_mass
+        self.mass = mass_components.total_mass
+        self.mass_of_each_stage = mass_components.mass_of_each_stage
+        self.burnout_velocity = mass_components.burnout_velocity
+        self.structural_ratios = mass_components.structural_ratios
+        self.specific_impulses = mass_components.specific_impulses
+        self.effective_exhaust_velocities = mass_components.effective_exhaust_velocities
 
         self.stage_weights = 9.81 * self.mass_of_each_stage[:-1] # Weight of the stage (N)
         self.stage_thrusts = self.thrust_to_weight * self.stage_weights
