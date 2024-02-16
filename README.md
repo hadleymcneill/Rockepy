@@ -16,9 +16,9 @@ Rockepy aims to bridge the gap between advanced flight computations and ease of 
 Rockepy is continuously under active development, future updates will continue to incorporate a wide range of functionalities that are both comprehensive and easy to use. I am excited about the journey ahead and am committed to continually evolving and improving. 
 ### Highlight Features
 
-- **Orbital Flight**: Users can easily construct their orbital rockets and targetted orbits with defined user inputs or through optimisation.
+- **Orbital Flight**: Rockepy empowers users to seamlessly design and execute missions aiming for orbit around the Earth. This feature set focuses on the initial launch phase, guiding rockets from the ground to a designated orbit. It includes tools for calculating trajectory, optimising fuel efficiency, and ensuring payload delivery to the correct orbital parameters. The toolkit simplifies complex calculations involved in achieving orbit, including stage separation dynamics, delta-v calculations, and the impact of atmospheric conditions on launch vehicles. Users can customise their mission parameters, such as launch site, target orbit, and payload mass, to accurately simulate and optimise their space missions.
 
-- **Sub-Orbital Flight**: 
+- **Sub-Orbital Flight**: Tailored for missions that do not require orbit achievement, the Sub-Orbital Flight feature within Rockepy offers a detailed analysis of launch ascent trajectories, vehicle performance under atmospheric conditions, and recovery operations. It is ideal for sounding rockets, ballistic simulations, or any application requiring sub-orbital flight. This module allows for the exploration of various flight profiles, including the impact of drag coefficient, thrust-to-weight ratios, thrust performance during ascent and descent phases. Additionally, users can simulate the effects of different environmental conditions on the rocket's trajectory, ensuring a comprehensive understanding and planning of sub-orbital missions.
 
 ## A brief look at whats possible with Rockepy
 
