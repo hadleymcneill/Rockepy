@@ -1,4 +1,4 @@
-from flight.orbital_flight.optimisation.optimiser import OrbitalFlightOptimiser
+from flightdynamics.orbital_flight.optimisation.optimiser import OrbitalFlightOptimiser
 from aerodynamics.perturbations import DragPerturbation
 
 

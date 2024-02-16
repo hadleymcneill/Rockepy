@@ -1,8 +1,8 @@
-from flight.suborbital_flight.rocket.suborbital_rocket import SuborbitalRocket
-from flight.mass_components import MassComponents
+from flightdynamics.suborbital_flight.rocket.suborbital_rocket import SuborbitalRocket
+from flightdynamics.mass_components import MassComponents
 from aerodynamics.perturbations import DragPerturbation
-from flight.suborbital_flight.rocket.thrust_suborbital import SuborbitalThrust
-from flight.suborbital_flight.suborbital_flight_propagation import Propagator
+from flightdynamics.suborbital_flight.rocket.thrust_suborbital import SuborbitalThrust
+from flightdynamics.suborbital_flight.suborbital_flight_propagation import Propagator
 from mission_analysis.launch_profile import PropagationProfile
 
 

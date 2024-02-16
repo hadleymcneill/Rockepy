@@ -2,10 +2,10 @@
 This file contains the class for the objective function of the orbital trajectory optimisation problem.
 """
 
-from flight.orbital_flight.rocket.orbital_rocket import OrbitalRocket
-from flight.mass_components import MassComponents
-from flight.orbital_flight.rocket.orbital_flight_thrust import OrbitalThrust
-from flight.orbital_flight.orbital_flight_propagation import Propagator
+from flightdynamics.orbital_flight.rocket.orbital_rocket import OrbitalRocket
+from flightdynamics.mass_components import MassComponents
+from flightdynamics.orbital_flight.rocket.orbital_flight_thrust import OrbitalThrust
+from flightdynamics.orbital_flight.orbital_flight_propagation import Propagator
 import numpy as np
 
 
