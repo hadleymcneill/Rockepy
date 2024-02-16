@@ -22,9 +22,9 @@ Rockepy is continuously under active development, future updates will continue t
 
 ## A brief look at whats possible with Rockepy
 
-#### Mission design
+#### Trajectory Analysis
 <p align="center">
-  <img src="utilities/assets/Tutorial_1.png" width="300" height="300">
+  <img src="utilities/assets/Tutorial_1_profile.png" width="300" height="300">
 </p>
 
 _The profile of a mission from low Earth orbit with a hohmann transfer to a geosynchronous orbit followed by a phasing manoeuvre._
