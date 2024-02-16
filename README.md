@@ -61,7 +61,7 @@ _A simpified and advanced profile of an optimised staged orbital launch to a tar
   <img src="utilities/assets/Tutorial_3_flight_path_angle.png" width="650" height="350">
 </p>
 
-_Some of the available reporting options used for orbital and sub-orbital flight analysis._
+_Some of the available reporting options used for orbital and sub-orbital flight analyses._
 
 ---
 
