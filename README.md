@@ -42,13 +42,13 @@ _A simpified and advanced profile of a staged orbital launch._
 
 ---
 
-#### Orbit Propagation
+#### Orbit Targeting
 <p align="center">
   <img src="utilities/assets/Tutorial_3_advanced_orbit.png" width="650" height="400">
   <img src="utilities/assets/Tutorial_3_orbit.png" width="400" height="400">
 </p>
 
-_Simulation of a satellite in low Earth orbit propagated over an extended period, demonstrating how the orbit evolves due to various forces._
+_A simpified and advanced profile of an optimised staged orbital launch to a target orbit._
 
 ---
 
