@@ -20,7 +20,7 @@ Rockepy is continuously under active development, future updates will continue t
 
 - **Sub-Orbital Flight**: Tailored for missions that do not require orbit achievement, the Sub-Orbital Flight feature within Rockepy offers a detailed analysis of launch ascent trajectories, vehicle performance under atmospheric conditions, and recovery operations. It is ideal for sounding rockets, ballistic simulations, or any application requiring sub-orbital flight. This module allows for the exploration of various flight profiles, including the impact of drag coefficient, thrust-to-weight ratios, thrust performance during ascent and descent phases. Additionally, users can simulate the effects of different environmental conditions on the rocket's trajectory, ensuring a comprehensive understanding and planning of sub-orbital missions.
 
-## A brief look at whats possible with Rockepy
+## A brief look at what's possible with Rockepy
 
 #### Suborbital Launch Analysis
 <p align="center">
@@ -32,10 +32,10 @@ _The profile of a suborbital launch in different weather conditions._
 
 ---
 
-#### Orbtal Launch Analysis
+#### Orbital Launch Analysis
 <p align="center">
   <img src="utilities/assets/Tutorial_2_detailed_insertion.png" width="700" height="400">
-  <img src="utilities/assets/Tutorial_2_insertion.png" width="1000" height="350">
+  <img src="utilities/assets/Tutorial_2_insertion.png" width="900" height="300">
 </p>
 
 _A simpified and advanced profile of a staged orbital launch._
@@ -52,21 +52,16 @@ _A simpified and advanced profile of an optimised staged orbital launch to a tar
 
 ---
 
-#### Low Thrust Missions
+#### Comprehensive Mission Reporting
 <p align="center">
-  <img src="utilities/assets/Tutorial_5.png" width="300" height="300">
+  <img src="utilities/assets/Tutorial_1_dynamic_pressure.png" width="650" height="350">
+  <img src="utilities/assets/Tutorial_3_velocity.png" width="650" height="350">
+  <img src="utilities/assets/Tutorial_3_acceleration.png" width="650" height="350">
+  <img src="utilities/assets/Tutorial_3_mass.png" width="650" height="350">
+  <img src="utilities/assets/Tutorial_3_flight_path_angle.png" width="650" height="350">
 </p>
 
-_Visualisation of a low thrust manoeuvre from a low to high Earth orbit._
-
----
-
-#### Advanced Manoeuvres
-<p align="center">
-  <img src="utilities/assets/Tutorial_4.png" width="300" height="300">
-</p>
-
-_Mission simulation of an aerobraking manoeuvre to further demonstrate the capabilities of Astronaupy._
+_Some of the available reporting options used for orbital and sub-orbital flight analyses._
 
 ---
 
