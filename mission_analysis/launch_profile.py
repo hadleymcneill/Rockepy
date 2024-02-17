@@ -93,7 +93,7 @@ class PropagationProfile:
 
         # Launch location and inclination
         rot = earth.rotate_z(-self.longitude, inplace=False) # Determines longitude
-        rot = rot.rotate_y(90-self.latitude, inplace=False) # Determines latitude
+        rot = rot.rotate_y(90 - self.latitude, inplace=False) # Determines latitude
         rot = rot.rotate_z(180 - normalised_inclination, inplace=False) # Determines inclination
 
         # Create plotter with Earth and stars
