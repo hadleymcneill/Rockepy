@@ -1,5 +1,5 @@
 """
-This file contains the classes that define the perturbations acting on a rocket during flight.
+This file contains the classes that define the perturbations acting on a missile during flight.
 """
 
 from aerodynamics.atmospheric_model import atmospheric_density, wind_model
@@ -8,7 +8,7 @@ import numpy as np
 
 class DragPerturbation:
     """
-    This class represents the drag acting on a rocket during propagation.
+    This class represents the drag acting on a missile during propagation.
     """
     def __init__(self, wind_condition="None"):
         """
@@ -58,7 +58,7 @@ class DragPerturbation:
 
 class Lift:
     """
-    This class represents the lift acting on a rocket during propagation.
+    This class represents the lift acting on a missile during propagation.
     """
 
     def __init__(self, Cl):
@@ -95,7 +95,7 @@ class Lift:
         lift_direction = np.cross(normal_vector, velocity_relative_to_atmosphere)
         lift_direction_normalized = -lift_direction / np.linalg.norm(lift_direction)
 
-        # Calculate the drag force perturbation acceleration
+        # Calculate the lift force perturbation acceleration
         du_lift = (- 0.5 * density * (vrel_magnitude * 1000) ** 2 * self.Cl * rocket.area / mass *
                    lift_direction_normalized[0]) / 1000
         dv_lift = (- 0.5 * density * (vrel_magnitude * 1000) ** 2 * self.Cl * rocket.area / mass *
